@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<button class="tab-link" onclick="openInnovationTab(event, 'social-commerce')">Social Commerce
+    (XR)</button>
+<button class="tab-link" onclick="openInnovationTab(event, 'hybrid-events')">Hybrid Events</button>
+<button class="tab-link" onclick="openInnovationTab(event, 'build-path')">Build Path & APIs</button>
+<button class="tab-link" onclick="openInnovationTab(event, 'use-cases')">Strategy & Use Cases</button>
+<button class="tab-link" onclick="openInnovationTab(event, 'about')">About</button>
+</nav>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Innovations | Innovana Suite</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&family=Quicksand:wght@500;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../src/css/styles.css">
+<div id="innovations">
 
-    <!-- Tab Navigation for Innovations -->
-    <nav id="innovations-nav">
-        <button class="tab-link active" onclick="openInnovationTab(event, 'virtual-showrooms')">Virtual
-            Showrooms</button>
-        <button class="tab-link" onclick="openInnovationTab(event, 'ar-experiences')">AR Product
-            Experiences</button>
-        <button class="tab-link" onclick="openInnovationTab(event, 'social-commerce')">Social Commerce
-            (XR)</button>
-        <button class="tab-link" onclick="openInnovationTab(event, 'hybrid-events')">Hybrid Events</button>
-        <button class="tab-link" onclick="openInnovationTab(event, 'build-path')">Build Path & APIs</button>
-        <button class="tab-link" onclick="openInnovationTab(event, 'use-cases')">Strategy & Use Cases</button>
-    </nav>
 
     <!-- Virtual Showrooms Tab -->
     <div id="virtual-showrooms" class="tab-content" style="display: block;">
@@ -282,11 +266,205 @@ npm install three @react-three/fiber @react-three/drei @react-three/xr qrcode.re
             <li>
                 <strong>POST /api/ar-experiences</strong>
                 <p>Generates a shareable AR experience from an existing model.</p>
-                <pre
-                    style="background:#eee;padding:0.5em;border-radius:4px;"><strong>Request Body:</strong> { "modelId": "product-abc" }
+                <pre style="background:#eee;padding:0.5em;border-radius:4px;"><strong>Request Body:</strong> { "modelId": "product-abc" }
+            </div>
+        </div>
+    </div>
+
+    <!-- AR Product Experiences Tab -->
+    <div id="ar-experiences" class="tab-content" style="display: none;">
+        <h3>Generate AR Product Experiences</h3>
+        <p>Select a 3D model to generate a shareable AR experience for mobile devices. This uses WebXR for a
+            seamless, app-free experience.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 300px; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                <form id="create-ar-form">
+                    <label for="select-model-ar">Choose a Product 3D Model:</label>
+                    <select id="select-model-ar" name="select-model-ar"
+                        style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                        <option value="model1">Luxury_Watch_Series_A.glb</option>
+                        <option value="model2">Modern_Armchair.glb</option>
+                        <option value="model3">Running_Shoes_X2.glb</option>
+                    </select>
+                    <button type="submit" class="btn-primary">Generate AR Link & QR Code</button>
+                </form>
+            </div>
+            <div id="ar-output"
+                style="flex: 2; min-width: 300px; margin-top: 20px; display: flex; gap: 20px; align-items: center; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                <div id="qr-code-container"
+                    style="width: 150px; height: 150px; background: #fff; border: 1px solid #ddd; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: #888;">QR Code Here</p>
+                </div>
+                <div>
+                    <h4>Shareable AR Link:</h4>
+                    <a id="ar-link" href="#" target="_blank" style="color: #0052CC; word-break: break-all;">Link
+                        will be generated here...</a>
+                    <p style="font-size: 0.9em; color: #555; margin-top: 10px;">Scan the QR code or open the
+                        link on a mobile device to view the product in your space.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Commerce Tab -->
+    <div id="social-commerce" class="tab-content" style="display: none;">
+        <h3>Social Commerce in XR</h3>
+        <p>Bridge the gap between digital and physical retail with immersive shopping experiences.</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <!-- Virtual Storefront -->
+            <div style="flex: 2; min-width: 300px; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                <h4>Browse Virtual Storefronts</h4>
+                <p>Explore products in a fully 3D environment. This would be rendered using
+                    <strong>@react-three/fiber</strong>.
+                </p>
+                <div
+                    style="border: 1px solid #ddd; padding: 10px; background: #fff; border-radius: 5px; height: 200px; overflow-y: auto;">
+                    <!-- Product List -->
+                    <div
+                        style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                        <img src="https://via.placeholder.com/60x60.png?text=Hat" alt="Hat"
+                            style="width: 60px; height: 60px; border-radius: 5px; margin-right: 10px;">
+                        <div>
+                            <strong>Vintage Fedora</strong><br>
+                            <span>$75.00</span><br>
+                            <button class="btn-secondary" style="padding: 3px 8px; font-size: 0.8em; margin-top: 5px;"
+                                onclick="alert('API call to trigger AR Try-On for product ID 123')">AR
+                                Try-On</button>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <img src="https://via.placeholder.com/60x60.png?text=Glasses" alt="Glasses"
+                            style="width: 60px; height: 60px; border-radius: 5px; margin-right: 10px;">
+                        <div>
+                            <strong>Aviator Sunglasses</strong><br>
+                            <span>$150.00</span><br>
+                            <button class="btn-secondary" style="padding: 3px 8px; font-size: 0.8em; margin-top: 5px;"
+                                onclick="alert('API call to trigger AR Try-On for product ID 456')">AR
+                                Try-On</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Immersive Checkout -->
+            <div style="flex: 1; min-width: 250px; background: #f0f0f0; padding: 15px; border-radius: 8px;">
+                <h4>Immersive Checkout</h4>
+                <p>A seamless payment flow without leaving the AR/VR experience.</p>
+                <ul style="font-size: 0.9em; padding-left: 20px;">
+                    <li>Connects to existing payment gateways (Stripe, PayPal).</li>
+                    <li>Uses secure, tokenized transactions.</li>
+                    <li>Leverages platform-native UI (e.g., Meta Quest UI) for payment input.</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%;"
+                    onclick="alert('Initiating immersive checkout process...')">Checkout Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hybrid Events Tab -->
+    <div id="hybrid-events" class="tab-content" style="display: none;">
+        <h3>Hybrid Events & Social Hangouts</h3>
+        <p>Host and attend events that merge physical and virtual audiences in a shared social space.</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <!-- Event Listings -->
+            <div style="flex: 1; min-width: 300px; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                <h4>Upcoming Hybrid Events</h4>
+                <div style="border: 1px solid #ddd; padding: 10px; background: #fff; border-radius: 5px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong>Innovana Product Launch</strong><br>
+                        <span>Date: Dec 15, 2025</span><br>
+                        <button class="btn-primary" style="padding: 3px 8px; font-size: 0.8em; margin-top: 5px;"
+                            onclick="alert('Joining virtual venue...')">Join as Avatar</button>
+                        <button class="btn-secondary" style="padding: 3px 8px; font-size: 0.8em; margin-top: 5px;"
+                            onclick="alert('Showing physical event details and ticket options.')">Attend in
+                            Person</button>
+                    </div>
+                    <div>
+                        <strong>Community Hangout: XR Trends</strong><br>
+                        <span>Date: Dec 20, 2025</span><br>
+                        <button class="btn-primary" style="padding: 3px 8px; font-size: 0.8em; margin-top: 5px;"
+                            onclick="alert('Joining virtual venue...')">Join as Avatar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avatar Networking -->
+            <div
+                style="flex: 2; min-width: 300px; background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center;">
+                <h4>Network as Avatars</h4>
+                <p>Interact with other attendees in a 3D space with spatial audio and chat.</p>
+                <div
+                    style="width: 100%; height: 150px; background: #ddd; border-radius: 5px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                    <p>A multiplayer scene using <strong>WebSockets</strong> and <strong>Three.js</strong> would
+                        be here.</p>
+                    <div
+                        style="position: absolute; bottom: 10px; background: rgba(0,0,0,0.5); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">
+                        Live Event: Product Launch
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Build Path & APIs Tab -->
+    <div id="build-path" class="tab-content" style="display: none;">
+        <h3>Suggested Build Path & API Requirements</h3>
+
+        <h4>1. Frontend (Cost-Effective & Modern: React + Vite)</h4>
+        <p>Using <strong>React</strong> with <strong>Vite</strong> provides a fast, modern, and minimal-setup
+            development experience. The <strong>Three.js</strong> ecosystem, particularly with
+            <strong>@react-three/fiber</strong>, is the industry standard for immersive web experiences.
+        </p>
+        <pre style="background:#272822;color:#f8f8f2;padding:1em;border-radius:8px;">
+# 1. Setup React Project with Vite (Faster than Create React App)
+npm create vite@latest innovana-immersive-web -- --template react-ts
+
+# 2. Install Dependencies for 3D/AR
+cd innovana-immersive-web
+npm install three @react-three/fiber @react-three/drei @react-three/xr qrcode.react
+
+# 3. Recommended Component Structure
+# src/
+# |- features/
+#    |- innovations/
+#       |- VirtualShowroom.tsx  (Manages state, lists, forms)
+#       |- ARExperiences.tsx    (Manages AR generation form)
+#       |- ThreeCanvas.tsx      (Reusable 3D viewer component)
+#       |- ar-viewer.html       (Simple page for the QR code link)
+                </pre>
+
+                <h4>2. Backend API Endpoints (e.g., Express.js / NestJS)</h4>
+                <p>A simple REST API is sufficient to manage 3D assets and AR experiences.</p>
+                <ul style="line-height: 1.6;">
+                    <li>
+                        <strong>POST /api/showrooms</strong>
+                        <p>Creates/uploads a new showroom. Uses `multipart/form-data` for file upload.</p>
+                        <pre
+                            style="background:#eee;padding:0.5em;border-radius:4px;"><strong>Request Body:</strong> { name: "Showroom Name", modelFile: File }
+<strong>Response (201):</strong> { "id": "showroom-123", "name": "Showroom Name", "modelUrl": "https://cdn.innovana.com/showrooms/file.glb" }</pre>
+                    </li>
+                    <li>
+                        <strong>GET /api/showrooms</strong>
+                        <p>Returns a list of all available showrooms.</p>
+                        <pre
+                            style="background:#eee;padding:0.5em;border-radius:4px;"><strong>Response (200):</strong> [{ "id": "showroom-123", "name": "Showroom Name", "modelUrl": "..." }]</pre>
+                    </li>
+                    <li>
+                        <strong>DELETE /api/showrooms/:id</strong>
+                        <p>Deletes a specific showroom by its ID.</p>
+                        <pre
+                            style="background:#eee;padding:0.5em;border-radius:4px;"><strong>Response (204):</strong> No Content</pre>
+                    </li>
+                    <li>
+                        <strong>POST /api/ar-experiences</strong>
+                        <p>Generates a shareable AR experience from an existing model.</p>
+                        <pre
+                            style="background:#eee;padding:0.5em;border-radius:4px;"><strong>Request Body:</strong> { "modelId": "product-abc" }
 <strong>Response (200):</strong> { "arUrl": "https://ar.innovana.com/view?model=product-abc", "qrCodeDataUrl": "data:image/png;base64,iVBORw0KGgo..." }</pre>
-            </li>
-        </ul>
+                    </li>
+                </ul>
     </div>
 
     <!-- Strategy & Use Cases Tab -->
@@ -327,9 +505,129 @@ npm install three @react-three/fiber @react-three/drei @react-three/xr qrcode.re
                 technologies like Three.js within a WebView.</li>
         </ul>
     </div>
+
+    <!-- About Tab -->
+    <div id="about" class="tab-content" style="display: none;">
+        <h3>About Innovana Immersive Web & AR/VR</h3>
+        <p>Innovana Suite is building a multi‑purpose immersive ecosystem that blends AR/VR with AI, haptics, and
+            multisensory innovation. Designed to scale across industries, our platform transforms how people learn,
+            work, play, heal, and connect.</p>
+
+        <h4>Defining Factors We Deliver</h4>
+        <ul>
+            <li><strong>Presence:</strong> Experiences that make users feel truly “inside” the environment.</li>
+            <li><strong>Interactivity:</strong> Real‑time actions with immediate, natural responses.</li>
+            <li><strong>Immersion:</strong> Multi‑sensory depth across sight, sound, and touch.</li>
+        </ul>
+
+        <h4>Emerging Applications</h4>
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+            <!-- Education Card -->
+            <div class="app-card"
+                style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 2em; margin-bottom: 10px;">🎓</div>
+                <h5 style="margin: 0 0 10px 0; color: #333;">Education & Training</h5>
+                <p style="font-size: 0.9em; color: #666;">Interactive classrooms, labs, and simulations for immersive
+                    learning.</p>
+                <button class="btn-secondary" style="margin-top: 10px; font-size: 0.8em; width: 100%;">Explore
+                    Module</button>
+            </div>
+
+            <!-- Collaboration Card -->
+            <div class="app-card"
+                style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 2em; margin-bottom: 10px;">💼</div>
+                <h5 style="margin: 0 0 10px 0; color: #333;">Collaboration</h5>
+                <p style="font-size: 0.9em; color: #666;">Immersive meetings and co‑creation hubs for remote teams.</p>
+                <button class="btn-secondary" style="margin-top: 10px; font-size: 0.8em; width: 100%;">Enter
+                    Workspace</button>
+            </div>
+
+            <!-- Healthcare Card -->
+            <div class="app-card"
+                style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 2em; margin-bottom: 10px;">🏥</div>
+                <h5 style="margin: 0 0 10px 0; color: #333;">Healthcare & Wellness</h5>
+                <p style="font-size: 0.9em; color: #666;">Safe, tactile environments for therapy, training, and
+                    rehabilitation.</p>
+                <button class="btn-secondary" style="margin-top: 10px; font-size: 0.8em; width: 100%;">View
+                    Solutions</button>
+            </div>
+
+            <!-- Events Card -->
+            <div class="app-card"
+                style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 2em; margin-bottom: 10px;">🎤</div>
+                <h5 style="margin: 0 0 10px 0; color: #333;">Events & Entertainment</h5>
+                <p style="font-size: 0.9em; color: #666;">Hybrid concerts, conferences, and cultural showcases.</p>
+                <button class="btn-secondary" style="margin-top: 10px; font-size: 0.8em; width: 100%;">See
+                    Upcoming</button>
+            </div>
+
+            <!-- Community Card -->
+            <div class="app-card"
+                style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 2em; margin-bottom: 10px;">🌍</div>
+                <h5 style="margin: 0 0 10px 0; color: #333;">Community & Social</h5>
+                <p style="font-size: 0.9em; color: #666;">Shared XR hubs for global connection and exploration.</p>
+                <button class="btn-secondary" style="margin-top: 10px; font-size: 0.8em; width: 100%;">Join Hub</button>
+            </div>
+
+            <!-- Gaming Card -->
+            <div class="app-card"
+                style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 2em; margin-bottom: 10px;">🎮</div>
+                <h5 style="margin: 0 0 10px 0; color: #333;">Gaming</h5>
+                <p style="font-size: 0.9em; color: #666;">Next‑gen XR gameplay with tactile realism and social
+                    interaction.</p>
+                <button class="btn-secondary" style="margin-top: 10px; font-size: 0.8em; width: 100%;">Play
+                    Demo</button>
+            </div>
+
+            <!-- AI Card -->
+            <div class="app-card"
+                style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 2em; margin-bottom: 10px;">🤖</div>
+                <h5 style="margin: 0 0 10px 0; color: #333;">AI‑Driven Experiences</h5>
+                <p style="font-size: 0.9em; color: #666;">Adaptive environments that respond to user behavior and
+                    emotion.</p>
+                <button class="btn-secondary" style="margin-top: 10px; font-size: 0.8em; width: 100%;">Test AI</button>
+            </div>
+        </div>
+
+        <h4>Futuristic Predictions We’re Building Toward</h4>
+        <ul>
+            <li><strong>Haptic & Multisensory Integration:</strong> Gloves, suits, and controllers that simulate
+                texture, pressure, and resistance.</li>
+            <li><strong>Spatial Computing & Gesture Control:</strong> Natural hand/eye tracking for seamless
+                interaction.</li>
+            <li><strong>Full‑Body Immersion:</strong> Environmental simulation (temperature, vibration, wind) for
+                authentic presence.</li>
+            <li><strong>Neural Interfaces:</strong> Preparing for direct brain‑computer links as the next frontier.</li>
+        </ul>
+
+        <h4>Our Vision</h4>
+        <p>We believe immersive technology should be universal, compliant, and future‑proof. Innovana Suite’s AR/VR
+            ecosystem is designed to empower industries from education to gaming, ensuring every experience is engaging,
+            auditable, and resilient across multi‑tenant ecosystems.</p>
     </div>
-    </div>
-    <script src="../src/js/app.js"></script>
-    </body>
+</div>
+<script src="../src/js/app.js"></script>
+</body>
 
 </html>
