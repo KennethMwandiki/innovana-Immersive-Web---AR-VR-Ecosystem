@@ -30,7 +30,7 @@ Innovana Suite is building a multi‑purpose immersive ecosystem that blends AR/
 ### Live Deployment
 The latest version of the Innovations Sub-App is automatically deployed to GitHub Pages.
 
-**URL**: `https://kennethmwandiki.github.io/innovana-Immersive-Web---AR-VR-Ecosystem/` (Note: URL may vary based on repository name).
+**URL**: `https://kennethmwandiki.github.io/innovana-Immersive-Web---AR-VR-Ecosystem/`
 
 ### Testing Instructions
 
