@@ -1,34 +1,24 @@
-export class AIService {
-    private baseUrl: string;
-
-    constructor(baseUrl: string = 'http://localhost:3000/api/ai') {
-        this.baseUrl = baseUrl;
-    }
-
-    /**
-     * Generate text using Gemini AI
-     * @param prompt The user's prompt
      * @returns The generated text response
-     */
-    async generateText(prompt: string): Promise<any> {
-        try {
-            const response = await fetch(`${this.baseUrl}/gemini`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ prompt }),
-            });
+    */
+    async generateText(prompt: string): Promise < any > {
+    try {
+        const response = await fetch(`${this.baseUrl}/gemini`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt }),
+        });
 
-            if (!response.ok) {
-                throw new Error(`Gemini API Error: ${response.statusText}`);
-            }
+        if(!response.ok) {
+    throw new Error(`Gemini API Error: ${response.statusText}`);
+}
 
-            return await response.json();
+return await response.json();
         } catch (error) {
-            console.error('Failed to generate text:', error);
-            throw error;
-        }
+    console.error('Failed to generate text:', error);
+    throw error;
+}
     }
 
     /**
@@ -36,25 +26,25 @@ export class AIService {
      * @param prompt Description of the texture
      * @returns The URL of the generated texture
      */
-    async generateTexture(prompt: string): Promise<any> {
-        try {
-            const response = await fetch(`${this.baseUrl}/bria`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ prompt, type: 'texture' }),
-            });
+    async generateTexture(prompt: string): Promise < any > {
+    try {
+        const response = await fetch(`${this.baseUrl}/bria`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt, type: 'texture' }),
+        });
 
-            if (!response.ok) {
-                throw new Error(`Bria API Error: ${response.statusText}`);
-            }
+        if(!response.ok) {
+    throw new Error(`Bria API Error: ${response.statusText}`);
+}
 
-            return await response.json();
+return await response.json();
         } catch (error) {
-            console.error('Failed to generate texture:', error);
-            throw error;
-        }
+    console.error('Failed to generate texture:', error);
+    throw error;
+}
     }
 }
 
