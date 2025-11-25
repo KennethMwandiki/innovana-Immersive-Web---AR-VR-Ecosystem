@@ -31,3 +31,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Firebase
+.firebase/
+firebase-debug.log

@@ -1,23 +1,24 @@
 {
-    "hosting": {
-        "public": "public",
-        "ignore": [
-            "firebase.json",
-            "**/.*",
-            "**/node_modules/**"
-        ],
-        "rewrites": [
-            {
-                "source": "/api/**",
-                "function": "api"
-            },
-            {
-                "source": "/immersive/**",
-                "destination": "/immersive/index.html"
-            }
-        ]
-    },
-    "functions": {
-        "source": "functions"
-    }
+  "hosting": {
+    "site": "innovana-web-ar-vr",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "function": "api"
+      },
+      {
+        "source": "/immersive/**",
+        "destination": "/immersive/index.html"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions"
+  }
 }
