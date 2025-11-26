@@ -32,6 +32,15 @@ yarn-error.log*
 *.sln
 *.sw?
 
+
 # Firebase
 .firebase/
 firebase-debug.log
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Build artifacts (keep immersive dist in public for deployment)
+# public/immersive/ is needed for Firebase Hosting
