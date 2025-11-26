@@ -44,3 +44,34 @@ firebase-debug.log
 
 # Build artifacts (keep immersive dist in public for deployment)
 # public/immersive/ is needed for Firebase Hosting
+
+# Security & Secrets
+*.pem
+*.key
+*.cert
+*.p12
+.secrets
+secrets.json
+credentials.json
+service-account*.json
+
+# IDE specific
+.vscode/settings.json
+.idea/workspace.xml
+.idea/tasks.xml
+
+# OS specific
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+*.old
