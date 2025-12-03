@@ -1,76 +1,84 @@
-// Check Auth Status
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/api/auth/status')
-        .then(res => res.json())
-        .then(data => {
-            const loggedOutDiv = document.getElementById('logged-out');
-            const loggedInDiv = document.getElementById('logged-in');
-            const createShowroomForm = document.getElementById('create-showroom-form');
+    // Tab Navigation Logic
+    const navLinks = document.querySelectorAll('.nav-link');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-            if (data.isAuthenticated) {
-                loggedOutDiv.style.display = 'none';
-                loggedInDiv.style.display = 'flex';
-                document.getElementById('user-name').textContent = data.user.displayName;
-                if (data.user.photos && data.user.photos.length > 0) {
-                    document.getElementById('user-photo').src = data.user.photos[0].value;
-                }
-                if (createShowroomForm) createShowroomForm.style.display = 'block';
+    function switchTab(tabId) {
+        // Update active state for nav links
+        navLinks.forEach(link => {
+            if (link.getAttribute('data-tab') === tabId) {
+                link.classList.add('active');
             } else {
-                loggedOutDiv.style.display = 'block';
-                loggedInDiv.style.display = 'none';
-                if (createShowroomForm) {
-                    createShowroomForm.innerHTML = '<p>Please <a href="/auth/google">login</a> to create showrooms.</p>';
-                }
+                link.classList.remove('active');
             }
         });
-});
 
-function openInnovationTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    // Hide all tab content
-    tabcontent = document.getElementById('innovations').getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    // Deactivate all tab links
-    tablinks = document.getElementById('innovations-nav').getElementsByClassName("tab-link");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    // Show the selected tab and activate the link
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Mock functionality for buttons (Updated for Real API)
-document.addEventListener('DOMContentLoaded', () => {
-    const createShowroomForm = document.getElementById('create-showroom-form');
-    if (createShowroomForm) {
-        createShowroomForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('showroom-name').value;
-
-            fetch('/api/showrooms', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name })
-            })
-                .then(res => {
-                    if (res.status === 401) {
-                        alert('You must be logged in to do that.');
-                        window.location.href = '/auth/google';
-                        return;
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    if (data) {
-                        alert('Showroom created: ' + data.name);
-                        // Ideally, reload the list here
-                        location.reload();
-                    }
-                });
+        // Show active tab content
+        tabContents.forEach(content => {
+            if (content.id === tabId) {
+                content.classList.add('active');
+            } else {
+                content.classList.remove('active');
+            }
         });
     }
-});
 
+    // Add click event listeners to nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tabId = link.getAttribute('data-tab');
+            switchTab(tabId);
+            // Update URL hash without scrolling
+            history.pushState(null, null, `#${tabId}`);
+        });
+    });
+
+    // Handle initial hash in URL
+    const initialHash = window.location.hash.substring(1);
+    if (initialHash) {
+        const targetTab = document.querySelector(`.nav-link[data-tab="${initialHash}"]`);
+        if (targetTab) {
+            switchTab(initialHash);
+        }
+    }
+
+    // Mock Form Submissions
+    const showroomForm = document.getElementById('create-showroom-form');
+    if (showroomForm) {
+        showroomForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Showroom saved! (Mock API call)');
+            showroomForm.reset();
+        });
+    }
+
+    const arForm = document.getElementById('create-ar-form');
+    if (arForm) {
+        arForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const linkElement = document.getElementById('ar-link');
+            const qrContainer = document.getElementById('qr-code-container');
+
+            // Simulate generation
+            linkElement.textContent = 'Generating...';
+            linkElement.style.color = 'var(--color-neutral-3)';
+
+            setTimeout(() => {
+                const mockUrl = `https://ar.innovana.com/view?id=${Date.now()}`;
+                linkElement.textContent = mockUrl;
+                linkElement.href = mockUrl;
+                linkElement.style.color = 'var(--color-primary)';
+                qrContainer.innerHTML = '<span style="font-size: 3rem;">📱</span>';
+                alert('AR Experience Generated!');
+            }, 1000);
+        });
+    }
+
+    // Add global error handler for images
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function () {
+            this.src = 'https://via.placeholder.com/60x60?text=Img';
+        });
+    });
+});
