@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: innovana-webhook-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: VERIFY_TOKEN
+        sync: false # You will be prompted to enter this value in the Render Dashboard
+      - key: NODE_VERSION
+        value: 18.x

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Viewer - Innovana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+        }
+
+        model-viewer {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <model-viewer id="ar-model" camera-controls auto-rotate ar ar-modes="webxr scene-viewer quick-look"
+        shadow-intensity="1" alt="AR Model">
+        <button slot="ar-button"
+            style="background-color: white; border-radius: 50px; border: none; position: absolute; top: 16px; right: 16px; padding: 12px 24px; font-size: 16px; cursor: pointer;">
+            👋 View in AR
+        </button>
+    </model-viewer>
+
+    <div id="info">
+        <h3 style="margin-bottom: 10px;">AR Experience</h3>
+        <p style="font-size: 14px; color: #666;">Drag to rotate • Pinch to zoom • Tap AR button to place in your space
+        </p>
+    </div>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <script>
+        // Get model URL from query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const modelUrl = urlParams.get('model');
+
+        const modelViewer = document.getElementById('ar-model');
+
+        if (modelUrl) {
+            modelViewer.src = modelUrl;
+        } else {
+            // Default model
+            modelViewer.src = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
+        }
+    </script>
+</body>
+
+</html>

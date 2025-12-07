@@ -3,8 +3,8 @@ import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 export default function App() {
-  // Replace with your deployed Immersive Web App URL or local dev server (e.g., http://10.0.2.2:5173 for Android Emulator)
-  const IMMERSIVE_APP_URL = 'https://immersive-web.github.io/webxr-samples/';
+  // Live Firebase Hosting URL
+  const IMMERSIVE_APP_URL = 'https://innovana-web-ar-vr.web.app/';
 
   return (
     <SafeAreaView style={styles.container}>
@@ -17,6 +17,7 @@ export default function App() {
         domStorageEnabled={true}
         startInLoadingState={true}
         scalesPageToFit={true}
+        mediaPlaybackRequiresUserAction={false}
       />
     </SafeAreaView>
   );

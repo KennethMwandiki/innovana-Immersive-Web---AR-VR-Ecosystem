@@ -1,0 +1,97 @@
+[debug] [2025-11-25T21:14:11.600Z] ----------------------------------------------------------------------
+[debug] [2025-11-25T21:14:11.603Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-11-25T21:14:11.603Z] CLI Version:   14.8.0
+[debug] [2025-11-25T21:14:11.603Z] Platform:      win32
+[debug] [2025-11-25T21:14:11.604Z] Node Version:  v24.11.0
+[debug] [2025-11-25T21:14:11.604Z] Time:          Wed Nov 26 2025 00:14:11 GMT+0300 (East Africa Time)
+[debug] [2025-11-25T21:14:11.604Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-25T21:14:11.611Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-25T21:14:11.611Z] > authorizing via signed-in user (professionaltutor845@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\User\.gemini\antigravity\playground\swift-cassini
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-11-25T21:17:34.379Z] Checked if tokens are valid: false, expires at: 1764097381019
+[debug] [2025-11-25T21:17:34.379Z] Checked if tokens are valid: false, expires at: 1764097381019
+[debug] [2025-11-25T21:17:34.380Z] > refreshing access token with scopes: []
+[debug] [2025-11-25T21:17:34.384Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-25T21:17:34.384Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-25T21:17:37.104Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-25T21:17:37.105Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-25T21:17:37.118Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/availableProjects pageSize=100
+[debug] [2025-11-25T21:17:38.692Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/availableProjects 200
+[debug] [2025-11-25T21:17:38.692Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/availableProjects [omitted]
+[debug] [2025-11-25T21:17:57.651Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:17:57.652Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:17:57.652Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/innovana-web-ar-vr:addFirebase [none]
+[debug] [2025-11-25T21:18:00.265Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/innovana-web-ar-vr:addFirebase 200
+[debug] [2025-11-25T21:18:00.265Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/innovana-web-ar-vr:addFirebase {"name":"operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0"}
+[debug] [2025-11-25T21:18:00.266Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:00.266Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:00.266Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 [none]
+[debug] [2025-11-25T21:18:01.084Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 200
+[debug] [2025-11-25T21:18:01.085Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 {"name":"operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0"}
+[debug] [2025-11-25T21:18:01.600Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2025-11-25T21:18:01.600Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:01.601Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:01.601Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 [none]
+[debug] [2025-11-25T21:18:04.613Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 200
+[debug] [2025-11-25T21:18:04.613Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 {"name":"operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0"}
+[debug] [2025-11-25T21:18:05.627Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2025-11-25T21:18:05.628Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:05.628Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:05.628Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 [none]
+[debug] [2025-11-25T21:18:06.317Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 200
+[debug] [2025-11-25T21:18:06.318Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 {"name":"operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0"}
+[debug] [2025-11-25T21:18:08.339Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2025-11-25T21:18:08.340Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:08.340Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:08.340Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 [none]
+[debug] [2025-11-25T21:18:10.225Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 200
+[debug] [2025-11-25T21:18:10.225Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0 {"name":"operations/workflows/N2NlNzdjN2MtMTI0Yy00MzY5LWE4Y2EtNGFhYjBjMzM0NjI0","done":true,"response":{"@type":"type.googleapis.com/google.firebase.service.v1beta1.FirebaseProject","projectId":"innovana-web-ar-vr","projectNumber":"694684220258","displayName":"Innovana--Web---AR-VR","name":"projects/innovana-web-ar-vr","resources":{"hostingSite":"innovana-web-ar-vr"}}}
+[info] 
+[info] === Your Firebase project is ready! ===
+[info] 
+[info] Project information:
+[info]    - Project ID: innovana-web-ar-vr
+[info]    - Project Name: Innovana--Web---AR-VR
+[info] 
+[info] Firebase console is available at
+[info] https://console.firebase.google.com/project/innovana-web-ar-vr/overview
+[info] i  Using project innovana-web-ar-vr (Innovana--Web---AR-VR) 
+[info] 
+=== Hosting Setup
+[debug] [2025-11-25T21:18:10.237Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:10.237Z] Checked if tokens are valid: true, expires at: 1764109056105
+[debug] [2025-11-25T21:18:10.237Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/innovana-web-ar-vr [none]
+[debug] [2025-11-25T21:18:10.766Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/innovana-web-ar-vr 200
+[debug] [2025-11-25T21:18:10.766Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/innovana-web-ar-vr {"projectId":"innovana-web-ar-vr","projectNumber":"694684220258","displayName":"Innovana--Web---AR-VR","name":"projects/innovana-web-ar-vr","resources":{"hostingSite":"innovana-web-ar-vr"},"state":"ACTIVE","etag":"1_bbd74e0a-1886-4f87-a4c9-235773073807"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[info] +  Wrote innovations-sub-app/404.html 
+[debug] [2025-11-25T21:28:28.254Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2025-11-25T21:28:38.268Z] *** [apiv2] error from fetch(https://www.gstatic.com/firebasejs/releases.json, {"headers":{},"method":"GET"}): FetchError: request to https://www.gstatic.com/firebasejs/releases.json failed, reason: getaddrinfo EAI_AGAIN www.gstatic.com
+[debug] [2025-11-25T21:28:43.283Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:267:49)
+    at listOnTimeout (node:internal/timers:608:17)
+    at process.processTimers (node:internal/timers:543:7)
+[error] 
+[error] Error: An unexpected error has occurred.

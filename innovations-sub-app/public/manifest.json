@@ -1,0 +1,28 @@
+{
+    "name": "Innovana Immersive Ecosystem",
+    "short_name": "Innovana XR",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#121212",
+    "theme_color": "#00d2ff",
+    "description": "Build and deploy immersive AR/VR experiences directly from the web.",
+    "icons": [
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/3214/3214746.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/3214/3214746.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "immersive",
+        "webxr",
+        "productivity",
+        "utilities"
+    ],
+    "ovr_package_name": "com.innovana.webxr"
+}
