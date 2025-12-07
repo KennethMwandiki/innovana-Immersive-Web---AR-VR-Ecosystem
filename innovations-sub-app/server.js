@@ -1,67 +1,57 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
-const session = require('express-session');
-const passport = require('./server/auth');
-const db = require('./server/db');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors({
-    origin: ['http://localhost:3000', 'https://innovana-web-ar-vr.web.app'],
-    credentials: true
-}));
-app.post('/api/ar-experiences', ensureAuthenticated, (req, res) => {
-    res.json({
-        arUrl: `https://ar.innovana.com/view?model=${req.body.modelId}`,
-        qrCodeDataUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
-    });
-});
+app.use(cors());
+// Meta sends JSON, but sometimes also x-www-form-urlencoded. 
+// Important: Body parser is needed for the POST events.
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// --- Gemini AI Route ---
-app.post('/api/ai/gemini', async (req, res) => {
-    if (!checkApiKey('GEMINI_API_KEY', res)) return;
+// --- META WEBHOOK VERIFICATION ---
+// This endpoint is used by Meta to verify your server is real.
+// You must configure the same 'VERIFY_TOKEN' in your Meta App Dashboard.
+app.get('/webhook', (req, res) => {
+    const VERIFY_TOKEN = process.env.VERIFY_TOKEN || 'innovana_secret_token';
 
-    try {
-        const { prompt } = req.body;
-        console.log('Received Gemini prompt:', prompt);
-        // Placeholder for actual Gemini API call
-        res.json({ message: "Gemini response placeholder", originalPrompt: prompt });
+    const mode = req.query['hub.mode'];
+    const token = req.query['hub.verify_token'];
+    const challenge = req.query['hub.challenge'];
 
-    } catch (error) {
-        console.error('Gemini API Error:', error);
-        res.status(500).json({ error: 'Failed to process Gemini request' });
+    if (mode && token) {
+        if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+            console.log('WEBHOOK_VERIFIED');
+            res.status(200).send(challenge);
+        } else {
+            res.sendStatus(403);
+        }
+    } else {
+        res.sendStatus(400); // Bad Request
     }
 });
 
-// --- Bria AI Route ---
-app.post('/api/ai/bria', async (req, res) => {
-    if (!checkApiKey('BRIA_API_KEY', res)) return;
+// --- META WEBHOOK EVENT HANDLER ---
+// Meta sends updates here (e.g., app install, user purchase, etc.)
+app.post('/webhook', (req, res) => {
+    console.log('Webhook Event Received:', JSON.stringify(req.body, null, 2));
 
-    try {
-        const { prompt, type } = req.body;
-        const endpoint = process.env.BRIA_API_ENDPOINT || 'https://api.bria.ai/v1';
-        console.log('Received Bria prompt:', prompt, 'Type:', type);
-        // Placeholder for actual Bria API call
-        res.json({ message: "Bria response placeholder", assetUrl: "https://placeholder.com/texture.jpg" });
+    // Platform specific logic (e.g. Horizon, Instagram, etc.)
+    // const body = req.body;
+    // if (body.object === 'page') { ... }
 
-    } catch (error) {
-        console.error('Bria API Error:', error);
-        res.status(500).json({ error: 'Failed to process Bria request' });
-    }
+    // Always return 200 OK immediately to acknowledge receipt
+    res.status(200).send('EVENT_RECEIVED');
 });
 
-// Serve Immersive App (if built)
-app.use('/immersive', express.static(path.join(__dirname, 'public/immersive')));
+// Health check
+app.get('/', (req, res) => {
+    res.send('Innovana Webhook Server is Running');
+});
 
-// Start Server
 app.listen(PORT, () => {
-    console.log(`Innovations Sub-App running at http://localhost:${PORT}`);
-    console.log('Environment variables loaded:', {
-        GEMINI_KEY_SET: !!process.env.GEMINI_API_KEY,
-        BRIA_KEY_SET: !!process.env.BRIA_API_KEY
-    });
+    console.log(`Webhook server listening on port ${PORT}`);
 });
