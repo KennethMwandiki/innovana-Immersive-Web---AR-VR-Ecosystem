@@ -84,7 +84,7 @@ The primary method for embedding WebXR content within a React Native app is thro
     const ImmersiveView = () => {
       return (
         <WebView
-          source={{ uri: 'https://your-immersive-web-app.com' }}
+          source={{ uri: 'https://innovana-web-ar-vr.web.app' }}
           style={{ flex: 1 }}
           allowsInlineMediaPlayback={true}
           javaScriptEnabled={true}
@@ -104,7 +104,7 @@ To provide a "Launch in VR" experience from the mobile app to the Meta Quest hea
     import { Linking } from 'react-native';
 
     const openInVR = () => {
-      const url = 'https://your-immersive-web-app.com';
+      const url = 'https://innovana-web-ar-vr.web.app';
       // Check if running on Quest or trigger a "Send to Headset" flow
       Linking.openURL(url);
     };
