@@ -117,20 +117,47 @@ p {
 /* Header & Navigation */
 .main-header {
   background-color: var(--color-white);
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-xxl) 0;
   border-bottom: 1px solid var(--color-border);
   margin-bottom: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-neutral-1) 100%);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.main-logo {
+  height: 140px;
+  width: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s ease;
+  border: 4px solid var(--color-white);
+}
+
+.main-logo:hover {
+  transform: scale(1.02);
+}
+
+.header-text {
+  flex: 1;
 }
 
 .brand-title {
   color: var(--color-primary);
   margin-bottom: var(--spacing-xs);
+  font-size: 3rem;
+  letter-spacing: -1px;
 }
 
 .brand-subtitle {
   color: var(--color-neutral-3);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: var(--font-weight-medium);
+  max-width: 800px;
 }
 
 .main-nav {
@@ -595,4 +622,53 @@ textarea:focus {
 .text-muted {
   color: var(--color-neutral-3);
   font-size: 0.9em;
+}
+
+/* Responsive Branding */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+
+  .main-logo {
+    height: 90px !important;
+    width: 90px !important;
+    max-width: 90px !important;
+    max-height: 90px !important;
+    object-fit: contain !important;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .brand-title {
+    font-size: 1.8rem;
+    line-height: 1.1;
+  }
+
+  .brand-subtitle {
+    font-size: 0.95rem;
+    margin: 0.5rem auto 0;
+    max-width: 90%;
+    opacity: 0.9;
+  }
+
+  .nav-logo-icon {
+    display: none;
+    /* Hide icon on mobile to save space for menu items */
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .brand-title {
+    font-size: 1.55rem;
+  }
+
+  .main-logo {
+    height: 80px;
+    width: 80px;
+  }
 }

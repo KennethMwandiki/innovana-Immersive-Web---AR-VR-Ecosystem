@@ -3,28 +3,38 @@ import { auth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged,
 
 let currentUser = null;
 
-// UI Elements
-const userDisplay = document.getElementById('user-display');
+// UI Elements (selected inside initAuth for safety)
+let userDisplay = null;
 
 // Initialize Auth Listener
 function initAuth() {
-    console.log('Validating Auth State...');
-    // Render default state immediately to avoid blank space
-    updateUI(null);
+    console.log('--- Auth Module Initializing ---');
+    try {
+        userDisplay = document.getElementById('user-display');
+        console.log('User Display Target:', userDisplay ? 'Found' : 'Missing');
 
-    onAuthStateChanged(auth, (user) => {
-        console.log('Auth State Changed:', user ? 'Logged In' : 'Logged Out');
-        if (user) {
-            currentUser = user;
-            updateUI(user);
-        } else {
-            currentUser = null;
-            updateUI(null);
-        }
-    });
+        // The button is already hardcoded in index.html for immediate visibility.
+        // We only overwrite the UI if we get a definitive Auth state change.
+        onAuthStateChanged(auth, (user) => {
+            console.log('Auth State Changed:', user ? 'Logged In' : 'Logged Out');
+            if (user) {
+                currentUser = user;
+                updateUI(user);
+            } else {
+                currentUser = null;
+                // Only update if it was previously logged in, to avoid clearing hardcoded button
+                if (userDisplay && userDisplay.innerHTML.includes('Logout')) {
+                    updateUI(null);
+                }
+            }
+        });
 
-    setupAuthModal();
-    setupAuthListeners();
+        setupAuthModal();
+        setupAuthListeners();
+        console.log('--- Auth Module Ready ---');
+    } catch (error) {
+        console.error('Auth Module Initialization Failed:', error);
+    }
 }
 
 function setupAuthModal() {

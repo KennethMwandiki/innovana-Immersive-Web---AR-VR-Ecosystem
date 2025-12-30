@@ -115,17 +115,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         showroomForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            const submitBtn = showroomForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
             const name = document.getElementById('showroom-name').value;
             const modelFile = document.getElementById('model-upload').files[0];
 
             try {
-                const showroom = await createShowroom(name, modelFile);
-                alert('Showroom created successfully!');
-                showroomForm.reset();
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Uploading Model...';
+                if (window.showToast) window.showToast('Uploading 3D model to Firebase Storage...', 'info');
 
-                // No need to reload, real-time listener will handle it
+                const showroom = await createShowroom(name, modelFile);
+
+                if (window.showToast) window.showToast('Showroom created successfully!', 'success');
+                showroomForm.reset();
             } catch (error) {
-                alert('Error creating showroom: ' + error.message);
+                if (window.showToast) window.showToast('Error: ' + error.message, 'error');
+                else alert('Error creating showroom: ' + error.message);
+            } finally {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
             }
         });
     }
@@ -147,28 +159,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             const modelUrl = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
             const arUrl = generateARLink(modelUrl);
 
+            // Simulate generation delay
             setTimeout(() => {
                 linkElement.textContent = arUrl;
                 linkElement.href = arUrl;
                 linkElement.style.color = 'var(--color-primary)';
 
-                // Generate QR Code
+                // Generate Real QR Code using qrcode.js
                 if (typeof QRCode !== 'undefined') {
                     qrContainer.innerHTML = '';
                     new QRCode(qrContainer, {
                         text: arUrl,
-                        width: 128,
-                        height: 128,
+                        width: 140,
+                        height: 140,
                         colorDark: "#000000",
                         colorLight: "#ffffff",
                         correctLevel: QRCode.CorrectLevel.H
                     });
                 } else {
-                    qrContainer.innerHTML = '<span style="font-size: 3rem;">📱</span>';
+                    qrContainer.innerHTML = '<div style="background:#eee; padding: 20px; border-radius: 10px;">QR Library Missing</div>';
                 }
 
-                alert('AR Experience Generated!');
-            }, 1000);
+                if (window.showToast) window.showToast('AR Experience Live!', 'success');
+            }, 800);
         });
     }
 
