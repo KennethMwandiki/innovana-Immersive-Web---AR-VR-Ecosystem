@@ -8,7 +8,12 @@ const userDisplay = document.getElementById('user-display');
 
 // Initialize Auth Listener
 function initAuth() {
+    console.log('Validating Auth State...');
+    // Render default state immediately to avoid blank space
+    updateUI(null);
+
     onAuthStateChanged(auth, (user) => {
+        console.log('Auth State Changed:', user ? 'Logged In' : 'Logged Out');
         if (user) {
             currentUser = user;
             updateUI(user);
@@ -165,7 +170,7 @@ function updateUI(user) {
         // User is signed out
         if (userDisplay) {
             userDisplay.innerHTML = `
-                <button id="show-signin-modal" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+                <button id="show-signin-modal" class="btn-nav-auth" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
                     Log In / Sign Up
                 </button>
             `;
@@ -176,7 +181,11 @@ function updateUI(user) {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', initAuth);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAuth);
+} else {
+    initAuth();
+}
 
 // Export currentUser
 export { auth, currentUser };

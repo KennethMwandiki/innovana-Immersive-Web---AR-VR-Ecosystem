@@ -237,6 +237,26 @@ p {
   text-decoration: none;
 }
 
+.btn-nav-auth {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-bold);
+  border: 1px solid var(--color-white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.btn-nav-auth:hover {
+  background-color: var(--color-neutral-1);
+  transform: translateY(-1px);
+}
+
 /* Cards & Panels */
 .panel {
   background: var(--color-white);
