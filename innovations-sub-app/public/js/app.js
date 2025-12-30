@@ -220,16 +220,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // Show auth modal handler
-    const authModal = document.getElementById('auth-modal');
-    document.addEventListener('click', (e) => {
-        if (e.target.id === 'show-signin-modal') {
-            e.preventDefault();
-            if (authModal) {
-                authModal.style.display = 'flex';
-            }
-        }
-    });
+    // Auth Modal handling is now in auth.js
 
     // --- New Event Listeners for Functional Sections ---
 

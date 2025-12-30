@@ -84,7 +84,8 @@ The primary method for embedding WebXR content within a React Native app is thro
     const ImmersiveView = () => {
       return (
         <WebView
-          source={{ uri: 'https://innovana-web-ar-vr.web.app' }}
+          source={{ uri: 'ht
+          htps://innovana-web-ar-vr.web.app' }}
           style={{ flex: 1 }}
           allowsInlineMediaPlayback={true}
           javaScriptEnabled={true}
