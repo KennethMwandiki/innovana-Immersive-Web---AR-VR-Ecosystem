@@ -1,0 +1,9 @@
+[build]
+  base = "innovations-sub-app"
+  publish = "public"
+
+[[redirects]]
+  from = "/immersive/*"
+  to = "/immersive/index.html"
+  status = 200
+  force = true
