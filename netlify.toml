@@ -1,6 +1,7 @@
 [build]
   base = "innovations-sub-app"
   publish = "public"
+  functions = "netlify/functions"
 
 [[redirects]]
   from = "/immersive/*"
