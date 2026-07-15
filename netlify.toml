@@ -8,3 +8,15 @@
   to = "/immersive/index.html"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/orders/*"
+  to = "/.netlify/functions/orders"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/payments/*"
+  to = "/.netlify/functions/payments"
+  status = 200
+  force = false
