@@ -20,3 +20,15 @@
   to = "/.netlify/functions/payments"
   status = 200
   force = false
+
+[[redirects]]
+  from = "/events/*"
+  to = "/.netlify/functions/events"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/webhooks/stripe"
+  to = "/.netlify/functions/stripeWebhook"
+  status = 200
+  force = false

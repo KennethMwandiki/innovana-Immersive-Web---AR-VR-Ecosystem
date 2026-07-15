@@ -1,0 +1,129 @@
+openapi: 3.0.1
+info:
+  title: Innovana AR/VR API
+  version: 1.0.0
+  description: API surface for Netlify Functions supporting AR Product Experiences, Social Commerce, Hybrid Events, and AI integrations.
+servers:
+  - url: /.netlify/functions
+paths:
+  /gemini:
+    post:
+      summary: Gemini AI generate (placeholder)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+      responses:
+        '200':
+          description: Generated content (placeholder)
+  /bria:
+    post:
+      summary: Bria AI endpoint (placeholder)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                type:
+                  type: string
+      responses:
+        '200':
+          description: Bria response (placeholder)
+  /showrooms:
+    get:
+      summary: List showrooms (demo)
+      responses:
+        '200':
+          description: Array of showrooms
+    post:
+      summary: Create showroom (demo)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+    delete:
+      summary: Delete showroom (demo)
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+  /orders:
+    get:
+      summary: List orders
+      responses:
+        '200':
+          description: Array of orders
+    post:
+      summary: Create order (demo)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    type: object
+                total:
+                  type: number
+  /payments:
+    post:
+      summary: Create payment intent (Stripe skeleton)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                currency:
+                  type: string
+  /events:
+    get:
+      summary: List events (demo)
+      responses:
+        '200':
+          description: Array of events
+    post:
+      summary: Create event (demo)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                startAt:
+                  type: string
+    delete:
+      summary: Delete event (demo)
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+components: {}
