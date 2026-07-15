@@ -1,6 +1,7 @@
 // Main App Logic with Firebase Integration
 import { createShowroom, subscribeShowrooms, deleteShowroom, generateARLink } from './showrooms.js';
 import { auth } from './auth.js';
+import { callGemini, callBria } from './api.js';
 
 // Mock data for showrooms (fallback)
 const mockShowrooms = [
@@ -295,7 +296,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 case 'events': message = 'Fetching Event Schedule...'; break;
                 case 'social': message = 'Connecting to Social Hub...'; break;
                 case 'game': message = 'Launching Game Engine...'; break;
-                case 'ai': message = 'Initializing AI Assistant...'; break;
+                case 'ai':
+                    (async () => {
+                        showToast('Initializing AI Assistant...', 'info');
+                        try {
+                            const resp = await callGemini({ prompt: 'Hello from the interactive demo' });
+                            const summary = resp.message || resp.originalPrompt || JSON.stringify(resp);
+                            showToast('AI Ready: ' + summary, 'success');
+                        } catch (err) {
+                            showToast('AI Error: ' + (err.message || String(err)), 'error');
+                        }
+                    })();
+                    break;
             }
             showToast(message, 'info');
             setTimeout(() => {
